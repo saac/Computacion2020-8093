@@ -1,0 +1,7 @@
+
+nano
+bsdmainutils 
+vim
+emacs
+gedit
+libcgroup-dev
