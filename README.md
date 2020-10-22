@@ -4,4 +4,4 @@ Este es el repositorio Oficial del grupo 8093 para el curso de Coputación de 1e
 Aqui subiremos los codigos y cuadernos de Jupyter expuestos en clase, para que siempre esten disoponibles.
 
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/saac/Computacion2020-8093/master?urlpath=lab/tree/SistemaOperativo_LINUX/1-LINUX_ComandosBasicos.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/saac/Computacion2020-8093/master?urlpath=lab/tree/SistemaOperativo_LINUX/2-LINUX_ManejoDeArchivos.ipynb)
