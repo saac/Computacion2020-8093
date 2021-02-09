@@ -1,0 +1,332 @@
+\documentclass[letterpaper,10pt,twocolumn]{article}
+\usepackage[top=2.5cm,left=2.5cm,right=2.5cm]{geometry}%ajusta los margenes de las paginas
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,english]{babel}
+\usepackage{amsmath, amsthm, amsfonts, amssymb}%paquetes de la american mathematical society
+\usepackage{latexsym}%paquete de simbolos matematicos
+\usepackage{textcomp}%paquete con mas simbolos
+\usepackage[x11names,table]{xcolor} %los nombres de colores disponibles estan /etc/X11/rgb.txt
+\usepackage{colortbl}%para permitir el coloreado de tablas
+\usepackage{float}%Tener mayor control sobre las figuras o flotantes
+\usepackage{caption}%tiene un mayor control sobre las etiquetas de los flotantes
+\captionsetup{labelfont=bf,figurewithin=section,tablewithin=section}
+\usepackage{abstract}%paquete dedicado al control del abstract
+\usepackage{appendix}
+\usepackage[pdftex]{graphicx}
+%\usepackage[dvips]{graphicx} %Para compilar con el comando latex, si las imagenes son .eps
+\DeclareGraphicsExtensions{.png,.pdf,.jpg}
+\graphicspath{{imagenes/}}%directorio donde se guardan las imagenes
+\usepackage{hyperref}%para poder insertar direcciones web y crear hiperlinks dentro del
+                     %documento
+\spanishdecimal{.}%Utiliza el punto en vez de la coma en modo matemático
+\numberwithin{equation}{section}
+%\hyphenrules{nohyphenation}%Para que no parta las palabras de ninguna forma
+
+\newcommand{\grado}{\textdegree}%no funciona en modo matematico
+\newcommand{\espaciocaps}{\setlength{\abovecaptionskip}{2pt}
+  \setlength{\belowcaptionskip}{0pt}}
+\newcommand{\espacioitems}{\setlength{\itemsep}{0pt}}
+
+%COMPILAR
+% latex p1.tex 
+% dvipdfm p1.dvi, para imagenes eps
+
+%pdflatex p1.tex
+%para pdftex 
+
+%extraer imagenes de un pdf
+%pdfimages archivo.pdf imaganes
+%convert [options] input-file [options] output-file
+
+\title{\bf Rayos X}
+\author{ Facultad de Ciencias, Universidad Nacional Autónoma de México \\
+  Laboratoio de Física Contemporánea \\
+  Cosme Fulanito \\} 
+\date{\today}
+
+\begin{document}
+\selectlanguage{spanish}
+\renewcommand{\tablename}{Tabla}
+
+\twocolumn[
+\maketitle
+\begin{onecolabstract}
+  Se obtuvo el espectro característico del NaCl obteniendo 5 picos en los siguientes ángulos
+  $12.4 \pm 0.5$, $14.0 \pm 0.5$, $27.6 \pm 1.0$, $31.2 \pm 0.6$ y $53.5 \pm 1.1$  que
+  corresponde a las siguientes longitudes de ondas $1.2 \pm 1.5$, $1.4 \pm 1.3$, $1.3 \pm
+  2.5$, $1.5\pm 1.4$ y $1.5 \pm 1.9$ respectivamente. 
+\end{onecolabstract}
+]
+
+\section{Introducción}
+\label{sec:introduccion}
+
+Los rayos X fueron descubiertos en 1895 por el físico alemán Wilhelm Röetgen. Fueron llamados
+X porque en ese momento no se sabía que tipo de radiación era, ahora se sabe que son fotones
+altamente energéticos u ondas electromagnéticas con un longitud de onda del orden de 10 a
+0.01 nm. En la actualidad se usan principalmente para penetrar materia sólida, afectar una
+placa fotográfica, ionizar átomos  y provocar flourescencia de algunos compuestos químicos. 
+
+El objetivo de esta práctica es obtener el espectro de rayos X característico del NaCl a 30
+kV y 20 kV, y obtener las longitudes de onda correspondiente a cada pico mostrado en el
+espectro.
+
+\subsection{Principio físico}
+\label{sec:principio}
+
+Cuando un electrón es acelerado por cierto potencial y se dispara contra un átomo se puede
+presentar uno de los siguientes dos casos: que electrón pase cerca pero sin impactar al átomo
+o que el electrón se impacte con un electrón del átomo.
+
+En el primer caso el electrón se desvía de su trayectoria debido a la fuerza de atracción
+entre el núcleo (+) y el electrón (-), y se frena perdiendo energía que es emitida como
+radiación, este tipo de radiación es llamada Bremsstrahlung\footnote{Del idioma alemán, que
+  significa radiación de frenado.}. En el espectro de rayos X es la parte continua y suave,
+ver fig. \ref{fig:espectro}.Si el \cite{gautreau}. Dependiendo del potencial usado este
+espectro continuo tiene una longitud de onda mínima desde el cuál comienza, la cual es igual
+a,
+
+\begin{equation}
+  \label{eq:lmin}
+  \lambda_{min} = \frac{hc}{eV}
+\end{equation}
+
+que es cuando toda la energía cinética del electrón es convertida en radiación, esto es que
+el electrón es frenado en seco.
+
+En el segundo caso la energía cinética del electrón es tal que logra desprender al electrón
+atómico dejando un hueco que inmediatamente es ocupado por un electrón del mismo átomo en un
+nivel de mayor energía que al caer emite radiación\footnote{O un fotón.}, de un valor igual a
+la diferencia de energía entre los dos niveles involucrados. En el espectro de rayos X
+corresponde a los picos de la gráfica, ver fig. \ref{fig:espectro}. Existe una notación del
+tipo $A_{i}$, para designar entre que niveles\footnote{En espectroscopía también se les suele
+  llamar capas.} ocurre la emisión del fotón, donde $A$ indica la capa en la que fue arrancado
+el electrón y el subíndice $i$ indica el nivel de donde cayó el electrón que lleno el hueco,
+es decir si hueco es dejado en el nivel 1 se le asocia la letra $K$\footnote{En la notación
+  espectroscópica el número cuántico $n=1$ se designa por $K$, $n=2$ por $L$, $n=3$ por $M$
+  y así sucesivamente.} y si es llenado por un electrón del siguiente nivel superior, $n=2$,
+se le asigna la letra griega $\alpha$ en cambio si se llena con un electrón que estaba dos
+niveles arriba se le asigna la letra $\beta$ y así sucesivamente, por lo que para un fotón
+emitido al caer del nivel 5 al nivel 2 se le asignaría como  $L_{\gamma}$
+
+\begin{figure}[H]
+  \espaciocaps
+  \centering
+  \includegraphics[width=7cm,height=6cm]{espectro}
+  \caption{Espectro típico de rayos X generados por un ánodo de Mo a una diferencia de
+    potencial de 35 KeV.\cite{serway}}
+  \label{fig:espectro}
+\end{figure}
+
+\subsection{Producción de rayos X}
+\label{sec:produccion}
+
+Una forma común de producir rayos X es por medio de un tubo de rayos catódicos como el de la
+fig. \ref{fig:tubo}. El cátodo, por medio del filamento, es calentado por lo que los átomos
+del cátodo comienzan a vibrar provocando que la energía para desprender electrones
+superficiales disminuya, a esta forma de producir electrones se le llama emisión
+termoiónica\cite{beisser} PAG. 67(81). La gran diferencia de potencial aplicada entre el
+ánodo y el cátodo genera un haz de electrones que va a chocar contra el ánodo ocurriendo el
+proceso descrito en \ref{sec:principio}, al ser bombardeado constantemente puede llegar
+a calentarse demasiado por eso se utilizan metales con un punto de fusión elevado entre los 
+más comunes son tungsteno, molibdeno o cobre.\cite{beisser}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=7cm]{tubo}
+  \caption{Tubo de rayos catódicos.\cite{serway}}
+  \label{fig:tubo}
+\end{figure}
+
+\subsection{Detección de rayos X}
+\label{sec:deteccion}
+
+Para detectar la radiación electromagnética\footnote{Los rayos X interactuan con la materia
+  principalemente mediante tres procesos: absorción fotoeléctrica, dispersión de Compton y
+  producción de pares.\cite{krane}} existen diversos de aparatos como son: cámaras 
+de burbujas, centelleadores, cámaras de ionización, contadores proporcionales, detectores
+Geiger-Müller, entre otros. Estos últimos tres funcionan por medio de una diferencia de
+potencial aplicada a un gas, la diferencia entre los tres depende del voltaje aplicado entre
+el ánodo y cátodo porqué de esto depende los procesos que ocurren dentro de cada uno de
+ellos, fig. \ref{fig:regiones}.
+
+\begin{figure}[H]
+  \espaciocaps
+  \centering
+  \includegraphics[width=8cm,height=6cm]{regiones}
+  \caption{Las diferentes regiones de trabajo de ionización que dependen del voltaje aplicado
+    y la corriente producida por la creación de iones dentro del gas.} 
+  \label{fig:regiones}
+\end{figure}
+
+El funcionamiento del tubo GM es el siguiente: la radiación incidente pasa a través de una
+ventana delgada, fig. \ref{fig:geiger}, y entra al tubo donde ioniza el gas dejando pares de
+iones y electrones a su paso estos, debido a la gran diferencial de potencial entre el cátodo
+(el interior del tubo) y el ánodo (alambre) los iones positivos son atraídos al cátodo
+mientras que los electrones son atraídos al ánodo. En el camino al ánodo los electrones van
+acelerándose y chocando con otros átomos del gas a los que también ioniza generando más pares
+de iones, cada electrón puede llegar a ionizar hasta dos átomos una corriente cientos de
+veces mayor que en un contador proporcional. Al ser colectados por el ánodo los electrones se
+genera una señal negativa por otro lado los iones positivos al ser más masivos tardan mucho
+más en llegar al cátodo y cuando lo hacen generan un señal positiva, el tiempo transcurrido
+entre estas dos señales es llamado tiempo muerto y durante él cualquier otra ionización
+ocurrida en el tubo GM no es registrada\footnote{Por lo que un tubo GM no puede determinar
+  eventos más cercanos que $10^{4}$ por segundo.}. Ocurre que también al impactarse los iones 
+positivos contra los átomos del cátodo se vuelven a desprender electrones que son atraídos al
+ánodo sin embargo esta es una situación que no se desea ya que genera corrientes espurias,
+para evitar esto aparte del gas de ionización se utiliza un gas llamado de enfriamiento para
+que estos nuevos electrones en lugar de generar una nueva corriente pierdan sus energía en
+deshacer las moléculas del gas de enfriamiento\footnote{Puede ser orgánico ethanol o
+  inorgánico como el bromo o el cloro.}. También tomando en cuenta el tiempo de este proceso
+de 'enfriamiento' el tiempo entre cada ionización debe ser de alrededor de $40 \mu
+s$.\cite{littlefield} 
+
+\begin{figure}[H]
+  \espaciocaps
+  \centering
+  \includegraphics[width=8cm]{geiger}
+  \caption{Esquema típico del tubo Geiger-Müller.\cite{serway}}
+  \label{fig:geiger}
+\end{figure}
+
+\subsection{Ley de Bragg}
+\label{sec:bragg}
+
+Una onda electromagnética en la región del visible al pasar a través de una rejilla de
+difracción es difractada obteniendo mínimos y máximos en el lugar donde la onda tuvo
+interferencia destructiva o constructiva, respectivamente. William Bragg, padre e hijo, en
+Inglaterra y Max von Laue en Alemania sugirieron que un cristal\footnote{Un arreglo periódico
+  de átomos.} pudiese actuar como una rejilla de difracción tridimensional para radiación de
+cierta longitud de onda, de hecho para una $\lambda \le 2d$, donde $d$ es el espacio
+entre planos sucesivos del cristal, ver fig. \ref{fig:bragg}.\cite{serway}
+
+En la fig. \ref{fig:bragg} el rayo 1\footnote{Los rayos 1 y 2 evidentemente son rayos X.}, al
+chocar con un átomo del plano A del cristal es reflejado especularmente a cierto ángulo
+$\theta$ mientras que el rayo 2 es reflejado, al mismo ángulo, sobre un átomo en un plano
+sucesivo más abajo (el plano B), si la diferencia de camino $ABC$, entre los dos rayos, es
+igual a un número entero de longitudes de onda a la salida se obtiene interferencia
+constructiva la cual puede ser detectada. Por lo que se tiene la siguiente
+relación\cite{serway}: 
+
+\begin{equation}
+  \label{eq:bragg}
+  n\lambda = AB + BC = 2d \sen\theta. 
+\end{equation}
+
+\begin{figure}[H]
+  \espaciocaps
+  \centering
+  \includegraphics[width=8cm]{bragg}
+  \caption{Ley de Bragg.\cite{serway}}
+  \label{fig:bragg}
+\end{figure}
+
+\section{Desarrollo experimental}
+\label{sec:desarr}
+
+En la figura \ref{fig:dispositivo} se encuentra el diagrama esquemático del experimento. Para
+la primera etapa, la de alto voltaje, se fijo un voltaje de salida de 580 V. En el diagrama el
+llamado contador\footnote{Ratemeter.} se colocó a una escala máxima de 500 cuentas por 
+segundo. El dispositivo de control es el encargado tanto de hacer mover el motor, recibir la
+señal que llega del contador y enviarla a la computadora como también enviar a la computadora
+la posición del tubo GM, que el doble del ángulo, al cual el rayo X es difractado. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=8cm]{dispositivo}
+  \caption{Diagrama esquemático.}
+  \label{fig:dispositivo}
+\end{figure}
+
+El espectrómetro\footnote{Un espectrómetro típico se puede ver en la
+  fig. \ref{espectrometro}.} de rayos X utilizado fue el Tel-X-Ometer Tel.580\footnote{De la
+  marca Teletron.}, además se ocuparon los siguientes accesorios: el colimador primario de
+rendija vertical (582.001), el colimador de rendija vertical de 3 mm (562.016), el colimador
+de rendija vertical de 1 mm (562.015) y el detector Geiger-Müller. En el brazo movible del
+Tel.580 se colocó el tubo GM en la ranura 26, enfrente del tubo en la ranura 18 se colocó el
+colimador de 1 mm y el colimador de 3 mm en la ranura 13 mientras que el  colimador primario
+de rendija vertical fue colocado a la salida del tubo de rayos catódicos. El cristal de NaCl
+fue colocado en el portacristales del espectrómetro cuidando que la cara menos brillante
+apuntara hacia el tubo de rayos X. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=8cm]{espectrometro}
+  \caption{Espectrómetro de rayos X.\cite{serway}}
+  \label{espectrometro}
+\end{figure}
+
+El rango de trabajo fue de 12\grado a 120\grado en la escala de $2\theta$, en la computadora
+se utilizo un retardo de 75 ms y se hicieron 7 mediciones para 30 kV y 5 para 20 kV. 
+
+\section{Resultados}
+\label{sec:resultados}
+
+Los resultados de las mediciones mostraron claramente tres picos principales. También
+aparecieron picos secundarios muy cercanos a los primeros dos picos principales, ver
+fig. \ref{fig:30kv} y \ref{fig:20kv}. Los resultados completos se pueden ver en la tabla
+\ref{tab:resultados}, para la distancia interplanar se utilizo la dada en el manual del
+espectrómetro \cite{teletron}, que es igual a $d = 0.282$ nm.
+
+\begin{table}[H] 
+\centering
+\rowcolors{3}{gray!30}{}
+\begin{tabular}{|c|c|c|c|c|c|} 
+\hline 
+\rowcolor{LightBlue2} $2\theta$ & $\theta$ & $\sin\theta$ & $2d$ & $n\lambda$ & $n$ \\  
+\rowcolor{LightBlue2} (\grado) & (\grado) &  & (nm) & ($\AA$) &  \\  
+\hline 
+24.8 & 12.4 & 0.22 & 0.564 & 1.2 & 1 \\ 
+ $\pm$ 0.5 & & & & $\pm$ 1.5 & \\ 
+\hline 
+27.9 & 14.0 & 0.24 & 0.564 & 1.4 & 1 \\ 
+ $\pm$ 0.5 & & & &  $\pm$ 1.3 & \\ 
+\hline 
+55.2 & 27.6 & 0.46 & 0.564 & 2.6 &  2 \\ 
+ $\pm$ 1.0 & & & & $\pm$ 2.5 & \\ 
+\hline 
+62.5 & 31.2 & 0.52 & 0.564 & 2.9 & 2 \\ 
+ $\pm$ 0.6 & & & & $\pm$ 1.4 & \\ 
+\hline 
+106.9 & 53.5 & 0.80 & 0.564 & 4.5 & 3 \\ 
+ $\pm$ 1.1 & & & & $\pm$ 1.9 & \\ 
+\hline 
+\end{tabular} 
+\caption{Resultados del experimento.} 
+\label{tab:resultados}
+\end{table} 
+
+Las gráficas de las 7 mediciones de datos para 30 kV están en la fig. \ref{fig:30kv}
+mientras que los de las 5 mediciones para 20 kV están en la fig. \ref{fig:20kv}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=8cm,trim= 0.7cm 0.3cm 1.7cm 0.8cm,clip]{30kv}
+  \caption{Espectro del NaCl a 30 kV.}
+  \label{fig:30kv}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=8cm,trim= 0.7cm 0.3cm 1.7cm 0.8cm,clip]{20kv}
+  \caption{Espectro del NaCl a 20 kV.}
+  \label{fig:20kv}
+\end{figure}
+
+\section{Conclusiones}
+\label{sec:conclusiones}
+
+Con las mediciones realizadas se puede comprobar que efectivamente los rayos X generados por
+el espectrómetro son del orden la distancia interatómica del NaCl, sin embargo dadas las
+incertidumbres no se puede decir más cosas con mayor certeza. El hecho de que no hayan sido
+tan buenas las mediciones en parte se debe a que el tiempo de retardo, que ahora creemos, debe
+ser mayor a 75 ms\footnote{Aunque esto generaría que cada medición se llevará arriba de 10
+  minutos} y al sistema de automatización que algunas veces se llegaba a atorar, lo que
+provocaba volver a realizar la medición.
+
+Para obtener las $\lambda$ sólo fue necesario obtener los ángulos en los que se presentaban
+los picos, su altura sólo nos indica cuanta radiación paso a través del GM.
+
+\bibliographystyle{unsrt}
+\bibliography{referencias.bib}
+\end{document}
